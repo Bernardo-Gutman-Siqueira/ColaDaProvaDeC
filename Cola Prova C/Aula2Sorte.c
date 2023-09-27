@@ -1,27 +1,27 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<time.h> //cabecalho de funcoes de tempo
+#include<stdio.h> // Inclui o cabeçalho da biblioteca padrão de entrada e saída
+#include<stdlib.h> // Inclui o cabeçalho da biblioteca padrão de funções gerais
+#include<time.h> // Inclui o cabeçalho da biblioteca de funções de tempo
 
-int main(){ //metodo principal
-	srand(time(NULL)); //corrigindo o problema de geracao igual de numeros
-	int  aleatorio, erros, chute, recorde=100, continuar=1;
-	while(continuar == 1){
-		aleatorio = 1+rand()%100; //gero um numero entre 1 e 100
-		erros = 0;
-		chute = -1;
-		while(aleatorio != chute){ //enquanto não acertar o chute
+int main(){ // Função principal do programa
+	srand(time(NULL)); // Inicializa a semente do gerador de números aleatórios com o tempo atual
+	int  aleatorio, erros, chute, recorde=100, continuar=1; // Declaração de variáveis inteiras
+	while(continuar == 1){ // Loop que executa enquanto o usuário deseja continuar
+		aleatorio = 1+rand()%100; // Gera um número aleatório entre 1 e 100
+		erros = 0; // Inicializa a contagem de erros
+		chute = -1; // Inicializa a variável chute
+		while(aleatorio != chute){ // Loop que executa enquanto o usuário não acertar o número
 			printf("\nDigite um numero ");
-			scanf("%d", &chute);
-			if(chute != aleatorio){
-				erros++; //variavel erros e incrementada de 1
-				if(chute > aleatorio){ //errei para mais
+			scanf("%d", &chute); // Lê um número inteiro do usuário e armazena na variável chute
+			if(chute != aleatorio){ // Se o usuário não acertou o número
+				erros++; // Incrementa a contagem de erros
+				if(chute > aleatorio){ // Se o usuário chutou um número maior que o número aleatório
 					printf("\nVc errou\nO numero e menor");
-				}else{ //errei para menos
+				}else{ // Se o usuário chutou um número menor que o número aleatório
 					printf("\nVc errou\nO numero e maior");
 				}
-			}else{
-				if(erros < recorde){
-					recorde = erros;
+			}else{ // Se o usuário acertou o número
+				if(erros < recorde){ // Se a contagem de erros é menor que o recorde atual
+					recorde = erros; // Atualiza o recorde com a contagem atual de erros
 					printf("\nParabens\nVc bateu seu recorde\n");
 				}
 				printf("\nVc acertou o numero %d", aleatorio);
@@ -29,6 +29,7 @@ int main(){ //metodo principal
 			}
 		}
 		printf("\nDeseja continuar?\t0 - Nao\t1 - Sim ");
-		scanf("%d", &continuar);
+		scanf("%d", &continuar); // Lê a escolha do usuário se deseja continuar ou não e armazena na variável continuar
 	}
+	return 0; // Retorna 0 indicando que o programa terminou com sucesso
 }
